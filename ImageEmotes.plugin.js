@@ -2,7 +2,7 @@
  * @name ImageEmotes
  * @author Insanity#6867
  * @description Replaces unusable emotes with images of the emote
- * @version 0.1.0
+ * @version 0.1.1
  */
 
 module.exports = class ImageEmotes {
@@ -24,8 +24,9 @@ module.exports = class ImageEmotes {
 				
 				let id = msg.slice(msg.lastIndexOf(":")+1, msg.length-1)
 				let guildId = this.currentGuild.getGuildId()
+				console.log(guildId)
 				
-				if ( !this.emojis[guildId].includes(id) ) {
+				if ( guildId == null || !this.emojis[guildId].includes(id) ) {
 					msg = msg.replace(msg.match(/<:\S{0,32}:\d{18}>$/g)[0], `https://cdn.discordapp.com/emojis/${id}.png?size=64`)
 				}
 				
